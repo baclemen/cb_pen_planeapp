@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#appcontainer {
+  height: 100%;
+}
+body {
+  height: 100%;
+  touch-action: none;
+}
+html {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+#Selection {
+  height: 200px;
+  width: 100%;
+  display: inline-block;
+  background-color: beige;
+}
+
+#passengerselectiondiv {
+  display: inline-block;
+  height: 100%;
+  width: 200px;
+}
+
+#checkboxdiv {
+  display: inline-block;
+  width: 200px;
+}
+
+#timesliderdiv {
+  display: inline-block;
+  height: 100%;
+  width: 400px;
+}
+#calenderdiv {
+  display: inline-block;
+  height: 100%;
+  width: 250px;
+}
+
+#interactionlayer {
+  position: absolute;
+}
