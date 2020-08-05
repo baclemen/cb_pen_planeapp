@@ -3,24 +3,28 @@ const initState = {
 
     initValues: {
         id: 1,
-        capacity: 37,
+        adults: 1,
+        kids: 0,
         direct: true,
         luggage: true,
         lowcost: false,
-        timefrom: 0,
-        timeto: 1,
+        dep: [0,1],
+        arr: [0,1],
         dates: [],
+        date: new Date(),
     },
 
     uiState: {
         id: 1,
-        capacity: 37,
+        adults: 1,
+        kids: 0,
         direct: true,
         luggage: true,
         lowcost: false,
-        depfrom: 0,
-        depto: 1,
+        dep: [0,1],
+        arr: [0,1],
         dates: [],
+        date: new Date(),
     },
 
     uicolor: "black",
@@ -52,7 +56,6 @@ const rootReducer = (state = initState, action) => {
                 //newT = Math.min(state.t, Math.max(state.t + state.deltaT, 0)) + 1;
             }
             newtraces = [...traces, {type: 'ui', changes: action.changes, trace: action.trace, t: newT}];
-            console.log(newtraces)
             return {
                 ...state,
                 traces: newtraces,

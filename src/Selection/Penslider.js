@@ -51,10 +51,28 @@ class Penslider extends Component {
 
     //slider
     ctx.beginPath();
+    ctx.fillStyle = "#4285F4"
+    ctx.arc( 50 + this.props.uiState[this.props.title][0]*270, 25, 8, 0, 2 * Math.PI );
+    ctx.arc( 50 + this.props.uiState[this.props.title][1]*270, 25, 8, 0, 2 * Math.PI );
+    ctx.fill(); 
+
+    ctx.strokeStyle = "#4285F4";
+    ctx.beginPath();
+    ctx.moveTo(50 + this.props.uiState[this.props.title][0]*270, 25);
+    ctx.lineTo(50 + this.props.uiState[this.props.title][1]*270, 25);
+    ctx.stroke();
+
+    ctx.strokeStyle = this.props.uicolor;
+    ctx.beginPath();
     ctx.lineWidth = 3;
-    console.log(this.props.uiState)
-    ctx.moveTo( 50 + this.props.uiState[this.props.title]*270, 10);
-    ctx.lineTo( 50 + this.props.uiState[this.props.title]*270, 40);
+    ctx.moveTo( 50 + this.props.uiState[this.props.title][0]*270, 10);
+    ctx.lineTo( 50 + this.props.uiState[this.props.title][0]*270, 40);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.lineWidth = 3;
+    ctx.moveTo( 50 + this.props.uiState[this.props.title][1]*270, 10);
+    ctx.lineTo( 50 + this.props.uiState[this.props.title][1]*270, 40);
     ctx.stroke();
   }
 

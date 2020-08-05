@@ -11,6 +11,7 @@ const Elements = ({input}) => {
                     <th>{el.luggage ? "Yes" : "No"}</th>
                     <th>{el.lowcost ? "Yes" : "No"}</th>
                     <th>{el.direct ? "Yes" : "No"}</th>
+                    <th>{el.capacity}</th>
                 </tr>
             )
         })
@@ -28,6 +29,7 @@ const Elements = ({input}) => {
                     <th>Luggage</th>
                     <th>Lowcost</th>
                     <th>Direct</th>
+                    <th>Capacity</th>
                 </tr>
             </thead>
 

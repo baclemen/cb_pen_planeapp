@@ -34,6 +34,7 @@ class InteractionLayer extends Component {
   }
 
   pointerUpHandler(e) {
+    this.props.pointerUp()
     if(e.button===5 || e.button===2){
       this.setState({
         pendown: false,
@@ -84,16 +85,26 @@ class InteractionLayer extends Component {
       })
       const ctx = this.canvRef.current.getContext('2d');
 
-      var change = this.interpretTraceEl(this.state.pointertrace.slice(-2))
-      if(change){
-        this.setState({ 
+      var change = this.interpretTraceEl(this.state.pointertrace.slice(-2));
+      
+      if(change && Object.keys(change)[0] === "dates"){
+
+        var dates = this.state.changes.dates ? this.state.changes.dates : [];
+        var val = [...dates, change.dates]
+        this.setState({
+          changes: {...this.state.changes, dates: val}
+        })
+        console.log(this.state.changes)
+      }
+      else if(change){
+        this.setState({
           changes : {...this.state.changes, ...change}
         })
       }
 
 
       ctx.moveTo(this.state.pointertrace[this.state.pointertrace.length-1].x, this.state.pointertrace[this.state.pointertrace.length-1].y);
-      ctx.strokeStyle = this.props.uicolor
+      ctx.strokeStyle = this.props.uicolor;
       ctx.lineTo(e.clientX, e.clientY-offsetTop);
       ctx.stroke(); 
     }
