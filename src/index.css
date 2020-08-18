@@ -1,10 +1,15 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Open Sans;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: Open Sans;
+  src: url("//fonts.googleapis.com/css?family=Open+Sans");
 }
 
 code {
@@ -27,46 +32,284 @@ html {
   height: 100%;
 }
 
+#uidiv {
+  text-align: center;
+  border-bottom: #DADCE0 solid 1px;
+}
+
 #Selection {
-  height: 200px;
-  width: 100%;
+  position: relative;
+  height: 300px;
+  width: 1240px;
   display: inline-block;
-  background-color: beige;
+  background-color: rgb(255, 255, 255);
   text-align: center;
 }
 
+#route {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 693px;
+  margin: 10px;
+}
+
 #passengerselectiondiv {
-  display: inline-block;
-  height: 100%;
-  width: 200px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 220px;
+  width: 150px;
+  transform: translate(0px, 30px);
 }
 
 #checkboxdiv {
+  position: absolute;
+  left: 150px;
+  top: 0;
+  height: 220px;
   display: inline-block;
-  width: 200px;
-}
-
-#passengerselectiondiv {
-  display: inline-block;
-  vertical-align: top;
-  margin-top: calc(10%);
-  margin-bottom: calc(40px);
-  height: auto;
-  width: 100px;
+  width: 150px;
+  transform: translate(0px, 30px);
 }
 
 #timesliderdiv {
+  position: absolute;
   display: inline-block;
-  height: 100%;
+  top: 0;
+  left: 300px;
+  height: 220px;
   width: 400px;
+  transform: translate(0px, 30px);
 }
+
+.slidertime{
+  position: absolute;
+  z-index: 0;
+  left: 340px;
+}
+
+.slider {
+  z-index: 10;
+}
+
+#selectordiv {
+  color: #DADCE0;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  height: 170px;
+  width: 660px;
+  border-radius: 5px;
+  border: 1px solid #DADCE0;
+  margin: 10px;
+  padding: 15px;
+}
+
 #calenderdiv {
+  position: absolute;
+  left: 700px;
+  top: 0;
   display: inline-block;
   vertical-align: top;
-  height: 100%;
-  width: 250px;
+  height: 300px;
+  width: 560px;
+}
+
+#innercalenderdiv {
+  height: 280px;
+  color: #DADCE0;
+  border-radius: 5px;
+  border: 1px solid #DADCE0;
+  margin: 10px;
+  padding: 0px;
+}
+
+.pickerdiv {
+  display: inline-block;
+  width: 208px;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+  color: black;
 }
 
 #interactionlayer {
   position: absolute;
+  z-index: 10;
+}
+
+#Results {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+#resultstable {
+  margin-left:auto; 
+  margin-right:auto;
+  display: inline-block;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.resultElement {
+  border: solid;
+  border-width: 1px 0;
+  border-color: #D7D8D9;
+}
+
+#resultstablebody {
+  box-shadow: 0 1px 1px 1px #D7D8D9;
+  border-radius: 10px;
+  border: 0px solid #73AD21;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.resultElement:first-child {
+  border-top: none;
+}
+.resultElement:last-child {
+  border-bottom: none;
+}
+.resultElement td{
+  padding: 15px;
+}
+
+.resultElement td:first-child{
+  text-align: center;
+}
+
+.minilogo {
+  width: 40%;
+}
+
+.tableSmall{
+  font-size: 12px;
+}
+
+.tableBig{
+  font-size: 15px;
+}
+
+#destfrom {
+  position: absolute;
+  left: 0;
+  color: #DADCE0;
+  padding: 20px;
+  display: inline-block;
+  text-align: left;
+  height: 30px;
+  width: 280px;
+  border: 1px solid #DADCE0;
+  border-radius: 5px;
+}
+
+#destto {
+  position: absolute;
+  right: 0;
+  color: #DADCE0;
+  padding: 20px;
+  display: inline-block;
+  text-align: left;
+  height: 30px;
+  width: 280px;
+  border: 1px solid #DADCE0;
+  border-radius: 5px;
+}
+
+.uisvg {
+  transform: translate(-2px, 4px);
+}
+
+text {
+  color: black;
+}
+
+.numberselectorvertmonth {
+  position: relative;
+  left: -84px;
+}
+
+.numberselectorvertyear {
+  position: absolute;
+  right: 0;
+}
+
+.cbdatepicker {
+  table-layout: fixed;
+  font-size: 12px;
+}
+
+.cbdatepickerheader > th {
+  width: 25px;
+  height: 30px;
+}
+
+.cbdatepicker > td {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+#topbar {
+  height: 30px;
+}
+
+#historyselector {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+#historybar{
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 40;
+}
+
+#historybar-canvas{
+  height: 120px;
+  width: 100%;
+  background-color: white;
+}
+
+#historybox {
+  position: absolute;
+  right: 15px;
+  bottom: 0;
+  z-index: 30;
+}
+
+#historybar + #resultsDiv {
+  height: calc(100% - 460px);
+}
+
+#Spiralcanvas {
+  height: 100%;
+  width: calc(100% - 15px);
+  position: absolute;
+  z-index: 10;
+  touch-action: none;
+}
+
+#resultsDiv {
+  width: 100%;
+  height: calc(100% - 340px);
+  overflow-y: scroll;
+}
+
+#title {
+  display: inline-block;
+  font-size: 23px;
+  transform: translate(0, -5px);
 }

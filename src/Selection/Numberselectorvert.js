@@ -19,32 +19,28 @@ class Numberselectorvert extends Component {
   }
 
   drawComponent(){
-    const ctx = this.canvRef.current.getContext("2d")
-    ctx.clearRect(0,0,this.props.width, this.props.height)
+    const ctx = this.canvRef.current.getContext("2d");
+    ctx.clearRect(0,0,this.props.width, this.props.height);
     ctx.beginPath();
-    ctx.rect(10, 10, 80, 20);
+
+
+    ctx.rect(10, 10, 100, 20);
     ctx.strokeStyle = this.props.uicolor
 
-    //|
-    ctx.moveTo(70,10);
-    ctx.lineTo(70,30);
-
     //-
-    ctx.moveTo(80,10);
-    ctx.lineTo(80,30);
 
     //
-    ctx.moveTo(77,15);
-    ctx.lineTo(73,20);
-    ctx.lineTo(77,25);
+    ctx.moveTo(94,15);
+    ctx.lineTo(90,20);
+    ctx.lineTo(94,25);
 
     //
-    ctx.moveTo(83,15);
-    ctx.lineTo(87,20);
-    ctx.lineTo(83,25);
+    ctx.moveTo(100,15);
+    ctx.lineTo(104,20);
+    ctx.lineTo(100,25);
 
     ctx.textAlign = "start";
-    ctx.font = "15px Tahoma";
+    ctx.font = "14px Tahoma";
     ctx.fillStyle = this.props.uicolor;
     ctx.fillText(this.props.title, 15, 26);
 
@@ -59,7 +55,7 @@ class Numberselectorvert extends Component {
 
   render() {
     return (
-          <canvas title={this.props.title} ref={this.canvRef} className="numberselectorvert" type={this.props.type} height={this.props.height} width={this.props.width}/>
+          <canvas title={this.props.title} ref={this.canvRef} className={"numberselectorvert" + this.props.type} type={this.props.type} height={this.props.height} width={this.props.width}/>
     );
   }
 }

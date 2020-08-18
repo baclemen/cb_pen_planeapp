@@ -57,7 +57,8 @@ class Calendar extends Component {
                 var date = new Date((date.getMonth()+1) + ' '+ d +' ' + date.getFullYear());
                 if(this.props.uiState.dates.map(x => x.getTime()).includes(date.getTime())){
                     style[i][j] = {
-                        backgroundColor: "#4285F4"
+                        backgroundColor: "#4285F4",
+                        color: "white"
                     }
                 }
                 else{
@@ -101,20 +102,20 @@ class Calendar extends Component {
     render(){
         return(
 
-            <div id="datepicker" className="pickerdiv">
+            <div className="pickerdiv">
 
-                <Numberselectorvert title={monthNames[this.props.month]} type="month" className="pennumberselector" width={100} height={40} uicolor={this.props.uicolor} />
-                <Numberselectorvert title={this.props.year} type="year" className="pennumberselector" width={100} height={40} uicolor={this.props.uicolor} />
+                <Numberselectorvert title={monthNames[this.props.month]} type="month" width={120} height={40} uicolor={this.props.uicolor} />
+                <Numberselectorvert title={this.props.year} type="year" width={120} height={40} uicolor={this.props.uicolor} />
                 <table className="cbdatepicker">
                     <thead>
-                        <tr className="cbdatepicker" id="cbdatepickerheader">
-                            <th className="cbdatepicker">Mon</th>
-                            <th className="cbdatepicker">Tue</th>
-                            <th className="cbdatepicker">Wed</th>
-                            <th className="cbdatepicker">Thu</th>
-                            <th className="cbdatepicker">Fri</th>
-                            <th className="cbdatepicker">Sat</th>
-                            <th className="cbdatepicker">Sun</th>
+                        <tr className="cbdatepickerheader">
+                            <th className="cbdatepicker">M</th>
+                            <th className="cbdatepicker">T</th>
+                            <th className="cbdatepicker">W</th>
+                            <th className="cbdatepicker">T</th>
+                            <th className="cbdatepicker">F</th>
+                            <th className="cbdatepicker">S</th>
+                            <th className="cbdatepicker">S</th>
                         </tr>
                     </thead>
                     <tbody>

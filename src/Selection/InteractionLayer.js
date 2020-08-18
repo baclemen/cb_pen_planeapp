@@ -22,10 +22,9 @@ class InteractionLayer extends Component {
     if(e.button===5 || e.button===2){
       return}
     //console.log(e, this)
-    var offsetTop = this.canvRef.current.parentElement.offsetTop;
     this.setState({
       pendown: true,
-      pointertrace: [{x: e.clientX, y: e.clientY - offsetTop}]
+      pointertrace: [{x: e.clientX, y: e.clientY}]
     })
 
     const ctx = this.canvRef.current.getContext('2d');
@@ -42,7 +41,7 @@ class InteractionLayer extends Component {
         changes: {}
       })
       var deltrace = null;
-      var dist = 5;
+      var dist = 10;
       for(var i = 0; i < this.props.displaytraces.length; i++){
         var temp = this.props.traces.find(el => el.t === this.props.displaytraces[i].t)
         if(temp){
@@ -52,7 +51,7 @@ class InteractionLayer extends Component {
         }
         var t = temp.t;
         for(var j = 0; j < trace.length; j++){
-          var newdist = Math.pow(Math.pow((trace[j].x - e.clientX),2) + Math.pow((trace[j].x - e.clientX),2),.5)
+          var newdist = Math.pow(Math.pow((trace[j].x - e.clientX),2) + Math.pow((trace[j].y - e.clientY),2),.5)
           if(newdist < dist){
             
             deltrace = t;
@@ -65,7 +64,20 @@ class InteractionLayer extends Component {
       }
       return
     }
-    this.props.addTrace(this.state.pointertrace, this.state.changes);
+    if(this.state.pointertrace.length < 4){
+      var offsetTop = this.canvRef.current.getBoundingClientRect().top
+      var offsetLeft = this.canvRef.current.getBoundingClientRect().left
+
+      var p0 = {x: e.clientX + 15, y: e.clientY - 70 + offsetTop}
+      var p1 = {x: e.clientX, y: e.clientY - 30 + offsetTop}
+      var change1 = this.interpretTraceEl([p0,p1]);
+      //var change2 = this.interpretTraceEl([p1,p2]);
+      this.props.addTrace([p0, p1], {...change1, ...change1})
+    }
+    else{
+      this.props.addTrace(this.state.pointertrace, this.state.changes);
+    }
+
     this.setState({
       pendown: false,
       pointertrace: [],
@@ -76,16 +88,17 @@ class InteractionLayer extends Component {
   }
 
   pointerMoveHandler(e) {
+    var offsetTop = this.canvRef.current.getBoundingClientRect().top
+    var offsetLeft = this.canvRef.current.getBoundingClientRect().left
     if(e.button===5 || e.button===2){
       return}
     if (this.state.pendown) {
-      var offsetTop = this.canvRef.current.parentElement.offsetTop;
       this.setState({
-        pointertrace: [...this.state.pointertrace, {x: e.clientX, y: e.clientY - offsetTop}]
+        pointertrace: [...this.state.pointertrace, {x: e.clientX, y: e.clientY}]
       })
       const ctx = this.canvRef.current.getContext('2d');
 
-      var change = this.interpretTraceEl(this.state.pointertrace.slice(-2));
+      var change = this.interpretTraceEl(this.state.pointertrace.slice(-3));
       
       if(change && Object.keys(change)[0] === "dates"){
 
@@ -103,27 +116,39 @@ class InteractionLayer extends Component {
       }
 
 
-      ctx.moveTo(this.state.pointertrace[this.state.pointertrace.length-1].x, this.state.pointertrace[this.state.pointertrace.length-1].y);
+      ctx.moveTo(this.state.pointertrace[this.state.pointertrace.length-1].x - offsetLeft, this.state.pointertrace[this.state.pointertrace.length-1].y -offsetTop);
       ctx.strokeStyle = this.props.uicolor;
-      ctx.lineTo(e.clientX, e.clientY-offsetTop);
+      ctx.lineTo(e.clientX - offsetLeft, e.clientY - offsetTop);
       ctx.stroke(); 
     }
   }
 
   componentDidUpdate(){
     if(!this.state.pendown){
-      //this.displaytraces();
+       this.displaytraces();
     }
   }
 
+  displaytraces(){
+    const ctx = this.canvRef.current.getContext('2d');
+    ctx.clearRect(0, 0, this.getSize().x, this.getSize().y);
+    for(var i = 0; i < this.props.displaytraces.length; i++){
+      var tmp = this.props.traces.find(el => el.t === this.props.displaytraces[i].t && el.type === "ui")
+      if(tmp){
+        this.drawtrace(ctx, tmp.trace, this.props.displaytraces[i].alpha);
+      }
+    }
+  }
 
   drawtrace(ctx, trace, alpha){
-    ctx.strokeStyle = "rgba(255, 255, 255, " + alpha + ")";
+    ctx.strokeStyle = "rgba(0, 0, 0, " + alpha + ")";
+    var offsetTop = this.canvRef.current.getBoundingClientRect().top
+    var offsetLeft = this.canvRef.current.getBoundingClientRect().left
     ctx.beginPath();
-    ctx.moveTo(trace[0].x, trace[0].y);
+    ctx.moveTo(trace[0].x - offsetLeft, trace[0].y - offsetTop);
 
     for(var i = 1; i < trace.length; i++){
-      ctx.lineTo(trace[i].x,trace[i].y);
+      ctx.lineTo(trace[i].x - offsetLeft,trace[i].y -offsetTop);
     }
     ctx.stroke();
   }
