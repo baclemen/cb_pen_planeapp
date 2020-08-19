@@ -19,8 +19,6 @@ class Selection extends Component {
     numberselectorvert: null,
     numberselectorvertval: null,
     numberselectorrefval: null,
-    year: 2020,
-    month: 7,
   }
 
   constructor(props) {
@@ -120,6 +118,23 @@ class Selection extends Component {
     }
 
     if (traceels.length < 2) {
+      const checkboxes = this.divRef.current.querySelectorAll(".checkbox")
+
+      for (var i = 0; i < checkboxes.length; i++) {
+        var checkbox = checkboxes[i]
+        var p1 = { x: checkbox.getBoundingClientRect().left + 110, y: checkbox.getBoundingClientRect().top + 10 }
+        var p2 = { x: checkbox.getBoundingClientRect().left + 130, y: checkbox.getBoundingClientRect().top + 30 }
+  
+        if (this.inBox(traceels[0], p1, p2)) {
+          this.props.setCheckbox(checkbox.id)
+          var val = !this.props.uiState[checkbox.id];
+          var id = checkbox.id;
+          var record = {
+            [id]: val
+          };
+          return record;
+        }
+      }
       return null;
     }
 
@@ -128,7 +143,7 @@ class Selection extends Component {
     if (this.state.numberselector !== null) {
       var numberselector = numberselectors[this.state.numberselector];
       var ref = numberselector.getBoundingClientRect().top + 10;
-      var delta = Math.floor((-traceels[1].y + ref) / 20) + 1
+      var delta = Math.floor((-traceels[1].y + ref) / 30) + 1
       var val = Math.max(this.state.numberselectorval + delta, 0);
       var record = {};
       var id = numberselector.id;
@@ -162,7 +177,7 @@ class Selection extends Component {
     if (this.state.numberselectorvert !== null) {
       var numberselector = numberselectorsvert[this.state.numberselectorvert];
       var ref = numberselector.getBoundingClientRect().right;
-      var delta = Math.floor((traceels[1].x - this.state.numberselectorrefval.x) / 20);
+      var delta = Math.floor((traceels[1].x - this.state.numberselectorrefval.x) / 30);
       var record = {};
       var type = numberselector.getAttribute("type");
       var val;
@@ -199,7 +214,8 @@ class Selection extends Component {
     }
 
 
-    const sliders = this.divRef.current.querySelector("#timesliderdiv").childNodes
+    const sliders = this.divRef.current.querySelectorAll(".slider")
+
 
     for (var i = 0; i < sliders.length; i++) {
       var slider = sliders[i]
@@ -245,7 +261,8 @@ class Selection extends Component {
       }
     }
 
-    const checkboxes = this.divRef.current.querySelector("#checkboxdiv").childNodes
+    const checkboxes = this.divRef.current.querySelectorAll(".checkbox")
+
 
     for (var i = 0; i < checkboxes.length; i++) {
       var checkbox = checkboxes[i]
@@ -336,8 +353,8 @@ class Selection extends Component {
           </div>
           <div id="calenderdiv">
             <div id="innercalenderdiv">
-              <Calendar year={this.props.uiState.date.getFullYear()} month={this.props.uiState.date.getMonth()} />
-              <Calendar year={this.props.uiState.date.getFullYear()} month={this.props.uiState.date.getMonth() + 1} />
+              <Calendar title="month1" year={this.props.uiState.date.getFullYear()} month={this.props.uiState.date.getMonth()} />
+              <Calendar title="month2" year={this.props.uiState.date.getFullYear() + (this.props.uiState.date.getMonth() === 11 ? 1 : 0)} month={(this.props.uiState.date.getMonth() + 1) % 12} />
             </div>
           </div>
         </div>

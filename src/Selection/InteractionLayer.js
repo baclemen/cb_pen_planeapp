@@ -41,7 +41,7 @@ class InteractionLayer extends Component {
         changes: {}
       })
       var deltrace = null;
-      var dist = 10;
+      var dist = 25;
       for(var i = 0; i < this.props.displaytraces.length; i++){
         var temp = this.props.traces.find(el => el.t === this.props.displaytraces[i].t)
         if(temp){
@@ -64,19 +64,7 @@ class InteractionLayer extends Component {
       }
       return
     }
-    if(this.state.pointertrace.length < 4){
-      var offsetTop = this.canvRef.current.getBoundingClientRect().top
-      var offsetLeft = this.canvRef.current.getBoundingClientRect().left
-
-      var p0 = {x: e.clientX + 15, y: e.clientY - 70 + offsetTop}
-      var p1 = {x: e.clientX, y: e.clientY - 30 + offsetTop}
-      var change1 = this.interpretTraceEl([p0,p1]);
-      //var change2 = this.interpretTraceEl([p1,p2]);
-      this.props.addTrace([p0, p1], {...change1, ...change1})
-    }
-    else{
-      this.props.addTrace(this.state.pointertrace, this.state.changes);
-    }
+    this.props.addTrace(this.state.pointertrace, this.state.changes);
 
     this.setState({
       pendown: false,

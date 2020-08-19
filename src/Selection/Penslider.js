@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import Destfrom from './img/flight_takeoff_grey600_24dp.png'
+import DestTo from './img/flight_land_grey600_24dp.png'
 
 
 
@@ -30,10 +32,10 @@ class Penslider extends Component {
 
     ctx.lineWidth = 1;
     //title
-    ctx.font = "15px Tahoma";
-    ctx.fillStyle = this.props.uicolor;
-    ctx.textAlign = 'left';
-    ctx.fillText(this.props.title, 0, 30);
+    // ctx.font = "15px Tahoma";
+    // ctx.fillStyle = this.props.uicolor;
+    // ctx.textAlign = 'left';
+    // ctx.fillText(this.props.title, 0, 30);
 
     var img = new Image();
     img.onload = function() {
@@ -158,7 +160,11 @@ class Penslider extends Component {
 
   render() {
     return (
+        <div>
+          {(this.props.title === "dep") && <img src={Destfrom} style={{position: "absolute", height: "25px", transform: "translate(0,12.5px)"}} />}
+          {(this.props.title === "arr") && <img src={DestTo} style={{position: "absolute", height: "25px", transform: "translate(0,12.5px)"}} />}
           <canvas id={this.props.title} ref={this.canvRef} className="slider" height={this.props.height} width={this.props.width*.8}/>
+        </div>
     );
   }
 }

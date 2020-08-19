@@ -106,75 +106,78 @@ class Calendar extends Component {
 
                 <Numberselectorvert title={monthNames[this.props.month]} type="month" width={120} height={40} uicolor={this.props.uicolor} />
                 <Numberselectorvert title={this.props.year} type="year" width={120} height={40} uicolor={this.props.uicolor} />
-                <table className="cbdatepicker">
-                    <thead>
-                        <tr className="cbdatepickerheader">
-                            <th className="cbdatepicker">M</th>
-                            <th className="cbdatepicker">T</th>
-                            <th className="cbdatepicker">W</th>
-                            <th className="cbdatepicker">T</th>
-                            <th className="cbdatepicker">F</th>
-                            <th className="cbdatepicker">S</th>
-                            <th className="cbdatepicker">S</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className="cbdatepicker">
-                            <td className="cbdatepicker" style={this.state.style[0][0]}>{this.state.view[0][0]}</td>
-                            <td className="cbdatepicker" style={this.state.style[0][1]}>{this.state.view[0][1]}</td>
-                            <td className="cbdatepicker" style={this.state.style[0][2]}>{this.state.view[0][2]}</td>
-                            <td className="cbdatepicker" style={this.state.style[0][3]}>{this.state.view[0][3]}</td>
-                            <td className="cbdatepicker" style={this.state.style[0][4]}>{this.state.view[0][4]}</td>
-                            <td className="cbdatepicker" style={this.state.style[0][5]}>{this.state.view[0][5]}</td>
-                            <td className="cbdatepicker" style={this.state.style[0][6]}>{this.state.view[0][6]}</td>
-                        </tr>
-                        <tr className="cbdatepicker">
-                            <td className="cbdatepicker" style={this.state.style[1][0]}>{this.state.view[1][0]}</td>
-                            <td className="cbdatepicker" style={this.state.style[1][1]}>{this.state.view[1][1]}</td>
-                            <td className="cbdatepicker" style={this.state.style[1][2]}>{this.state.view[1][2]}</td>
-                            <td className="cbdatepicker" style={this.state.style[1][3]}>{this.state.view[1][3]}</td>
-                            <td className="cbdatepicker" style={this.state.style[1][4]}>{this.state.view[1][4]}</td>
-                            <td className="cbdatepicker" style={this.state.style[1][5]}>{this.state.view[1][5]}</td>
-                            <td className="cbdatepicker" style={this.state.style[1][6]}>{this.state.view[1][6]}</td>
-                        </tr>
-                        <tr className="cbdatepicker">
-                            <td className="cbdatepicker" style={this.state.style[2][0]}>{this.state.view[2][0]}</td>
-                            <td className="cbdatepicker" style={this.state.style[2][1]}>{this.state.view[2][1]}</td>
-                            <td className="cbdatepicker" style={this.state.style[2][2]}>{this.state.view[2][2]}</td>
-                            <td className="cbdatepicker" style={this.state.style[2][3]}>{this.state.view[2][3]}</td>
-                            <td className="cbdatepicker" style={this.state.style[2][4]}>{this.state.view[2][4]}</td>
-                            <td className="cbdatepicker" style={this.state.style[2][5]}>{this.state.view[2][5]}</td>
-                            <td className="cbdatepicker" style={this.state.style[2][6]}>{this.state.view[2][6]}</td>
-                        </tr>
-                        <tr className="cbdatepicker">
-                            <td className="cbdatepicker" style={this.state.style[3][0]}>{this.state.view[3][0]}</td>
-                            <td className="cbdatepicker" style={this.state.style[3][1]}>{this.state.view[3][1]}</td>
-                            <td className="cbdatepicker" style={this.state.style[3][2]}>{this.state.view[3][2]}</td>
-                            <td className="cbdatepicker" style={this.state.style[3][3]}>{this.state.view[3][3]}</td>
-                            <td className="cbdatepicker" style={this.state.style[3][4]}>{this.state.view[3][4]}</td>
-                            <td className="cbdatepicker" style={this.state.style[3][5]}>{this.state.view[3][5]}</td>
-                            <td className="cbdatepicker" style={this.state.style[3][6]}>{this.state.view[3][6]}</td>
-                        </tr>
-                        <tr className="cbdatepicker">
-                            <td className="cbdatepicker" style={this.state.style[4][0]}>{this.state.view[4][0]}</td>
-                            <td className="cbdatepicker" style={this.state.style[4][1]}>{this.state.view[4][1]}</td>
-                            <td className="cbdatepicker" style={this.state.style[4][2]}>{this.state.view[4][2]}</td>
-                            <td className="cbdatepicker" style={this.state.style[4][3]}>{this.state.view[4][3]}</td>
-                            <td className="cbdatepicker" style={this.state.style[4][4]}>{this.state.view[4][4]}</td>
-                            <td className="cbdatepicker" style={this.state.style[4][5]}>{this.state.view[4][5]}</td>
-                            <td className="cbdatepicker" style={this.state.style[4][6]}>{this.state.view[4][6]}</td>
-                        </tr>
-                        <tr className="cbdatepicker">
-                            <td className="cbdatepicker" style={this.state.style[5][0]}>{this.state.view[5][0]}</td>
-                            <td className="cbdatepicker" style={this.state.style[5][1]}>{this.state.view[5][1]}</td>
-                            <td className="cbdatepicker" style={this.state.style[5][2]}>{this.state.view[5][2]}</td>
-                            <td className="cbdatepicker" style={this.state.style[5][3]}>{this.state.view[5][3]}</td>
-                            <td className="cbdatepicker" style={this.state.style[5][4]}>{this.state.view[5][4]}</td>
-                            <td className="cbdatepicker" style={this.state.style[5][5]}>{this.state.view[5][5]}</td>
-                            <td className="cbdatepicker" style={this.state.style[5][5]}>{this.state.view[5][6]}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className="cbdatepickerdiv">
+                    <table className="cbdatepicker">
+                        <thead>
+                            <tr className="cbdatepickerheader">
+                                <th className="cbdatepicker">M</th>
+                                <th className="cbdatepicker">T</th>
+                                <th className="cbdatepicker">W</th>
+                                <th className="cbdatepicker">T</th>
+                                <th className="cbdatepicker">F</th>
+                                <th className="cbdatepicker">S</th>
+                                <th className="cbdatepicker">S</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="cbdatepicker">
+                                <td className="cbdatepicker" style={this.state.style[0][0]}>{this.state.view[0][0]}</td>
+                                <td className="cbdatepicker" style={this.state.style[0][1]}>{this.state.view[0][1]}</td>
+                                <td className="cbdatepicker" style={this.state.style[0][2]}>{this.state.view[0][2]}</td>
+                                <td className="cbdatepicker" style={this.state.style[0][3]}>{this.state.view[0][3]}</td>
+                                <td className="cbdatepicker" style={this.state.style[0][4]}>{this.state.view[0][4]}</td>
+                                <td className="cbdatepicker" style={this.state.style[0][5]}>{this.state.view[0][5]}</td>
+                                <td className="cbdatepicker" style={this.state.style[0][6]}>{this.state.view[0][6]}</td>
+                            </tr>
+                            <tr className="cbdatepicker">
+                                <td className="cbdatepicker" style={this.state.style[1][0]}>{this.state.view[1][0]}</td>
+                                <td className="cbdatepicker" style={this.state.style[1][1]}>{this.state.view[1][1]}</td>
+                                <td className="cbdatepicker" style={this.state.style[1][2]}>{this.state.view[1][2]}</td>
+                                <td className="cbdatepicker" style={this.state.style[1][3]}>{this.state.view[1][3]}</td>
+                                <td className="cbdatepicker" style={this.state.style[1][4]}>{this.state.view[1][4]}</td>
+                                <td className="cbdatepicker" style={this.state.style[1][5]}>{this.state.view[1][5]}</td>
+                                <td className="cbdatepicker" style={this.state.style[1][6]}>{this.state.view[1][6]}</td>
+                            </tr>
+                            <tr className="cbdatepicker">
+                                <td className="cbdatepicker" style={this.state.style[2][0]}>{this.state.view[2][0]}</td>
+                                <td className="cbdatepicker" style={this.state.style[2][1]}>{this.state.view[2][1]}</td>
+                                <td className="cbdatepicker" style={this.state.style[2][2]}>{this.state.view[2][2]}</td>
+                                <td className="cbdatepicker" style={this.state.style[2][3]}>{this.state.view[2][3]}</td>
+                                <td className="cbdatepicker" style={this.state.style[2][4]}>{this.state.view[2][4]}</td>
+                                <td className="cbdatepicker" style={this.state.style[2][5]}>{this.state.view[2][5]}</td>
+                                <td className="cbdatepicker" style={this.state.style[2][6]}>{this.state.view[2][6]}</td>
+                            </tr>
+                            <tr className="cbdatepicker">
+                                <td className="cbdatepicker" style={this.state.style[3][0]}>{this.state.view[3][0]}</td>
+                                <td className="cbdatepicker" style={this.state.style[3][1]}>{this.state.view[3][1]}</td>
+                                <td className="cbdatepicker" style={this.state.style[3][2]}>{this.state.view[3][2]}</td>
+                                <td className="cbdatepicker" style={this.state.style[3][3]}>{this.state.view[3][3]}</td>
+                                <td className="cbdatepicker" style={this.state.style[3][4]}>{this.state.view[3][4]}</td>
+                                <td className="cbdatepicker" style={this.state.style[3][5]}>{this.state.view[3][5]}</td>
+                                <td className="cbdatepicker" style={this.state.style[3][6]}>{this.state.view[3][6]}</td>
+                            </tr>
+                            <tr className="cbdatepicker">
+                                <td className="cbdatepicker" style={this.state.style[4][0]}>{this.state.view[4][0]}</td>
+                                <td className="cbdatepicker" style={this.state.style[4][1]}>{this.state.view[4][1]}</td>
+                                <td className="cbdatepicker" style={this.state.style[4][2]}>{this.state.view[4][2]}</td>
+                                <td className="cbdatepicker" style={this.state.style[4][3]}>{this.state.view[4][3]}</td>
+                                <td className="cbdatepicker" style={this.state.style[4][4]}>{this.state.view[4][4]}</td>
+                                <td className="cbdatepicker" style={this.state.style[4][5]}>{this.state.view[4][5]}</td>
+                                <td className="cbdatepicker" style={this.state.style[4][6]}>{this.state.view[4][6]}</td>
+                            </tr>
+                            <tr className="cbdatepicker">
+                                <td className="cbdatepicker" style={this.state.style[5][0]}>{this.state.view[5][0]}</td>
+                                <td className="cbdatepicker" style={this.state.style[5][1]}>{this.state.view[5][1]}</td>
+                                <td className="cbdatepicker" style={this.state.style[5][2]}>{this.state.view[5][2]}</td>
+                                <td className="cbdatepicker" style={this.state.style[5][3]}>{this.state.view[5][3]}</td>
+                                <td className="cbdatepicker" style={this.state.style[5][4]}>{this.state.view[5][4]}</td>
+                                <td className="cbdatepicker" style={this.state.style[5][5]}>{this.state.view[5][5]}</td>
+                                <td className="cbdatepicker" style={this.state.style[5][5]}>{this.state.view[5][6]}</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
             </div>
         );
     }

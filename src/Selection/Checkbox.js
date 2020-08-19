@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import {ReactComponent as Luggage} from './img/noun_Suitcase_10620.svg'
+import {ReactComponent as Lowprice} from './img/noun_percentage_108380.svg'
 
 class Checkbox extends Component{
 
@@ -25,22 +27,16 @@ class Checkbox extends Component{
       ctx.clearRect(0, 0, this.props.width, this.props.height);
   
 
-      if (this.props.title === 'linedash'){
-        ctx.strokeStyle = "#4285F4";
-        ctx.lineWidth = 2;
-        ctx.setLineDash([3, 3]);
-        ctx.beginPath();
-        ctx.moveTo(40,20);
-        ctx.lineTo(90,20);
-        ctx.stroke();
-
-      } 
-      else {
+      if (this.props.title === 'direct'){
         ctx.lineWidth = 1;
         //title
         ctx.font = "15px Tahoma"
         ctx.fillStyle = this.props.uicolor;
         ctx.fillText(this.props.title, 40, 27)
+
+      } 
+      else {
+
       }
     
 
@@ -84,7 +80,11 @@ class Checkbox extends Component{
 
     render(){
         return(
-            <canvas id={this.props.title} ref={this.canvRef} height={this.props.height} width={this.props.width}/>
+            <div>
+                {(this.props.title === "luggage") && <Luggage style={{position: "absolute", height: "25px", transform: "translate(40px,12.5px)"}} />}
+                {(this.props.title === "lowcost") && <Lowprice style={{position: "absolute", height: "25px", transform: "translate(38px,12px)"}} />}
+                <canvas id={this.props.title} className="checkbox" ref={this.canvRef} height={this.props.height} width={this.props.width}/>
+            </div>
         )
     }
 }

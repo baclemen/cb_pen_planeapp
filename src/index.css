@@ -42,7 +42,6 @@ html {
   height: 300px;
   width: 1240px;
   display: inline-block;
-  background-color: rgb(255, 255, 255);
   text-align: center;
 }
 
@@ -232,8 +231,9 @@ text {
 }
 
 .numberselectorvertmonth {
-  position: relative;
-  left: -84px;
+  position: absolute;
+  right: 0;
+  top: 30px;
 }
 
 .numberselectorvertyear {
@@ -244,6 +244,9 @@ text {
 .cbdatepicker {
   table-layout: fixed;
   font-size: 12px;
+}
+.cbdatepickerdiv {
+  transform: translate(0,65px);
 }
 
 .cbdatepickerheader > th {

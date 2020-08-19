@@ -57,8 +57,19 @@ class Historyselector extends Component {
     ctx.fill();
 
     ctx.beginPath();
-    ctx.arc(187 + 70, 20, 8, 0, 2 * Math.PI);
-    ctx.fill();
+    ctx.moveTo(247,10)
+    ctx.lineTo(267,10)
+    ctx.lineTo(267,30)
+    ctx.lineTo(247,30)
+    ctx.lineTo(247,10)
+
+    ctx.moveTo(247,10)
+    ctx.lineTo(267,30)
+    ctx.moveTo(267,10)
+    ctx.lineTo(247,30)
+    ctx.stroke()
+    //ctx.arc(187 + 70, 20, 8, 0, 2 * Math.PI);
+    //ctx.fill();
 
     ctx.beginPath();
 

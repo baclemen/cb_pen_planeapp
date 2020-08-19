@@ -100,13 +100,13 @@ const rootReducer = (state = initState, action) => {
         
         case 'ADD_UITRACE':
             var newT
-            if(state.deltaT === 0){
+            if(state.traces.length && state.t >= state.traces[state.traces.length - 1].t){
                 traces = state.traces;
-                newT = state.t + 1;
+                newT = state.traces[state.traces.length - 1].t + 1;
             }
             else{
-                traces = clearTraces(state.traces, state.t + state.deltaT)
-                newT = Math.min(state.t, Math.max(state.t + state.deltaT, 0)) + 1;
+                traces = clearTraces(state.traces, state.t)
+                newT = Math.min(state.t, Math.max(state.t, 0)) + 1;
             }
             newtraces = [...traces, {type: 'ui', changes: action.changes, trace: action.trace, t: newT}];
             return {
@@ -122,8 +122,6 @@ const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 traces: newtraces,
-                t: (state.t+1),
-                tMax: (state.t+1),
                 uiState
             }
         case 'SET_STATE':
@@ -184,6 +182,20 @@ const rootReducer = (state = initState, action) => {
                 ...state,
                 t : state.t + state.deltaT,
                 deltaT: 0,
+            }
+        case 'UNDO':
+            var uiState = getPenState(state.traces, state.initValues, state.t - 1);
+            return{
+                ...state,
+                uiState,
+                t: Math.max(0, state.t - 1)
+            }
+        case 'REDO':
+            var uiState = getPenState(state.traces, state.initValues, state.t + 1);
+            return{
+                ...state,
+                uiState,
+                t: Math.min(state.t + 1, state.traces[state.traces.length - 1].t)
             }
 
         default:

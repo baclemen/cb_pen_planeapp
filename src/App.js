@@ -6,6 +6,7 @@ import Historyselector from './History/Historyselector'
 import Button from './History/Button'
 import Historybar from './History/Historybar'
 import Spiralcanvas from './Results/Spiralcanvas'
+import { connect } from 'react-redux';
 
 
 class App extends Component {
@@ -19,6 +20,19 @@ class App extends Component {
       History: val,
       Historyoverlay: false
     })
+  }
+
+  componentDidMount(){
+    document.addEventListener('keydown', this.keyDownHandler.bind(this))
+  }
+
+  keyDownHandler(event){
+    if (event.ctrlKey && event.key === 'z') {
+      this.props.undo()
+    }
+    else if (event.ctrlKey && event.key === 'y') {
+      this.props.redo()
+    }
   }
 
   render() {
@@ -46,4 +60,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    undo: () => { dispatch({type: 'UNDO' }) },
+    redo: () => { dispatch({type: 'REDO' }) },
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);
