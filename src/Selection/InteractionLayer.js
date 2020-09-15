@@ -86,7 +86,7 @@ class InteractionLayer extends Component {
       })
       const ctx = this.canvRef.current.getContext('2d');
 
-      var change = this.interpretTraceEl(this.state.pointertrace.slice(-3));
+      var change = this.interpretTraceEl(this.state.pointertrace.slice(-(Math.min(10, this.state.pointertrace.length))));
       
       if(change && Object.keys(change)[0] === "dates"){
 

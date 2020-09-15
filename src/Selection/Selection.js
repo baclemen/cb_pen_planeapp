@@ -51,13 +51,13 @@ class Selection extends Component {
       var p1 = { x: rect.left, y: rect.top };
       var p2 = { x: rect.right, y: rect.bottom };
 
-      if (this.inBox(traceels[0], p1, p2)) {
+      if (this.inBox(traceels[traceels.length - 1], p1, p2)) {
         var refel, a, b
         if (traceels.length === 1) {
           refel = traceels[0]
         }
         else {
-          refel = traceels[1]
+          refel = traceels[traceels.length - 1]
         }
         for (a = 0; a < 6; a++) {
           var top = table.children.item(a).getBoundingClientRect().top;
@@ -90,7 +90,7 @@ class Selection extends Component {
           }
         }
         else {
-          if (!this.inBox(traceels[0], p1, p2) && this.inBox(traceels[1], p1, p2) && el.innerHTML !== "") {
+          if (!this.inBox(traceels[traceels.length - 2], p1, p2) && this.inBox(traceels[traceels.length - 1], p1, p2) && el.innerHTML !== "") {
             date = new Date((this.props.uiState.date.getMonth() + 1 + i) + " " + el.innerHTML + " " + this.props.uiState.date.getFullYear())
           }
         }
@@ -143,7 +143,7 @@ class Selection extends Component {
     if (this.state.numberselector !== null) {
       var numberselector = numberselectors[this.state.numberselector];
       var ref = numberselector.getBoundingClientRect().top + 10;
-      var delta = Math.floor((-traceels[1].y + ref) / 30) + 1
+      var delta = Math.floor((-traceels[traceels.length - 1].y + ref) / 30) + 1
       var val = Math.max(this.state.numberselectorval + delta, 0);
       var record = {};
       var id = numberselector.id;
@@ -161,7 +161,7 @@ class Selection extends Component {
 
         //console.log(numberselectors)
 
-        if (this.inBox(traceels[1], p1, p2)) {
+        if (this.inBox(traceels[traceels.length-1], p1, p2)) {
           this.setState({
             numberselector: i,
             numberselectorval: this.props.uiState[numberselector.id]
@@ -177,7 +177,7 @@ class Selection extends Component {
     if (this.state.numberselectorvert !== null) {
       var numberselector = numberselectorsvert[this.state.numberselectorvert];
       var ref = numberselector.getBoundingClientRect().right;
-      var delta = Math.floor((traceels[1].x - this.state.numberselectorrefval.x) / 30);
+      var delta = Math.floor((traceels[traceels.length - 1].x - this.state.numberselectorrefval.x) / 30);
       var record = {};
       var type = numberselector.getAttribute("type");
       var val;
@@ -202,11 +202,11 @@ class Selection extends Component {
         var p2 = { x: numberselector.getBoundingClientRect().left + 100, y: numberselector.getBoundingClientRect().top + 30 };
 
 
-        if (this.inBox(traceels[1], p1, p2)) {
+        if (this.inBox(traceels[traceels.length - 1], p1, p2)) {
           this.setState({
             numberselectorvert: i,
             numberselectorvertval: this.props.uiState.date,
-            numberselectorrefval: traceels[1],
+            numberselectorrefval: traceels[traceels.length - 1],
           })
           return //record;
         }
@@ -225,8 +225,8 @@ class Selection extends Component {
 
 
 
-      if (this.intersects(traceels[0], traceels[1], p1, p2)) {
-        var val = ((traceels[0].x + traceels[1].x) / 2 - p1.x) / (slider.width - 80);
+      if (this.intersects(traceels[traceels.length - 2], traceels[traceels.length - 1], p1, p2) || (traceels[traceels.length - 1].y == p1.y && traceels[traceels.length - 1].y > p1.x && traceels[traceels.length - 1].x < p2.y)){
+        var val = ((traceels[traceels.length - 2].x + traceels[traceels.length - 1].x) / 2 - p1.x) / (slider.width - 80);
         var id = slider.id;
         var record = {}
 
@@ -246,7 +246,7 @@ class Selection extends Component {
         //   this.props.setState(record);
         //   return record;
         // }
-        var dir = (traceels[0].x - traceels[1].x) + (traceels[2].x - traceels[1].x)
+        var dir = (traceels[0].x - traceels[Math.floor(traceels.length/2)].x) + (traceels[Math.floor(traceels.length/2)].x - traceels[traceels.length - 1].x)
         if(dir < 0){
           record[id + "to"] = val;
           this.props.setState(record);
@@ -269,7 +269,7 @@ class Selection extends Component {
       var p1 = { x: checkbox.getBoundingClientRect().left + 110, y: checkbox.getBoundingClientRect().top + 10 }
       var p2 = { x: checkbox.getBoundingClientRect().left + 130, y: checkbox.getBoundingClientRect().top + 30 }
 
-      if (!this.inBox(traceels[0], p1, p2) && this.inBox(traceels[1], p1, p2)) {
+      if (!this.inBox(traceels[traceels.length - 2], p1, p2) && this.inBox(traceels[traceels.length - 1], p1, p2)) {
         this.props.setCheckbox(checkbox.id)
         var val = !this.props.uiState[checkbox.id];
         var id = checkbox.id;
