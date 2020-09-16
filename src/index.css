@@ -316,3 +316,32 @@ text {
   font-size: 23px;
   transform: translate(0, -5px);
 }
+
+button {
+  position: absolute;
+  top: 2.5px;
+  border-width: 1px;
+  outline:none; 
+  z-index: 50;
+  height: 35px; 
+  width: 35px;
+  background-color: white;
+}
+
+button:active{
+  background: #999999
+}
+
+button:hover{
+  background: #999999;
+}
+
+#buttonUndo {
+  right: 335px; 
+  border-right: none;
+}
+
+#buttonRedo {
+  right: 300px; 
+  border-left: solid 1px #444444
+}

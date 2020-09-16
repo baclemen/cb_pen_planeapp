@@ -195,7 +195,7 @@ const rootReducer = (state = initState, action) => {
             return{
                 ...state,
                 uiState,
-                t: Math.min(state.t + 1, state.traces[state.traces.length - 1].t)
+                t: Math.min(state.t + 1, state.traces[state.traces.length - 1] ? state.traces[state.traces.length - 1].t : 0)
             }
 
         default:
