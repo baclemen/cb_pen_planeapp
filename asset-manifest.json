@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/cb_pen_planeapp/static/css/main.160146bd.chunk.css",
+    "main.js": "/cb_pen_planeapp/static/js/main.fd86194e.chunk.js",
+    "main.js.map": "/cb_pen_planeapp/static/js/main.fd86194e.chunk.js.map",
+    "runtime-main.js": "/cb_pen_planeapp/static/js/runtime-main.650c243a.js",
+    "runtime-main.js.map": "/cb_pen_planeapp/static/js/runtime-main.650c243a.js.map",
+    "static/css/2.f87e9f44.chunk.css": "/cb_pen_planeapp/static/css/2.f87e9f44.chunk.css",
+    "static/js/2.ce7ce8a7.chunk.js": "/cb_pen_planeapp/static/js/2.ce7ce8a7.chunk.js",
+    "static/js/2.ce7ce8a7.chunk.js.map": "/cb_pen_planeapp/static/js/2.ce7ce8a7.chunk.js.map",
+    "index.html": "/cb_pen_planeapp/index.html",
+    "precache-manifest.a99acc9e11e980e07905172a4617ad53.js": "/cb_pen_planeapp/precache-manifest.a99acc9e11e980e07905172a4617ad53.js",
+    "service-worker.js": "/cb_pen_planeapp/service-worker.js",
+    "static/css/2.f87e9f44.chunk.css.map": "/cb_pen_planeapp/static/css/2.f87e9f44.chunk.css.map",
+    "static/css/main.160146bd.chunk.css.map": "/cb_pen_planeapp/static/css/main.160146bd.chunk.css.map",
+    "static/js/2.ce7ce8a7.chunk.js.LICENSE.txt": "/cb_pen_planeapp/static/js/2.ce7ce8a7.chunk.js.LICENSE.txt",
+    "static/media/destfrom.b97243dd.svg": "/cb_pen_planeapp/static/media/destfrom.b97243dd.svg",
+    "static/media/destto.e231c83a.svg": "/cb_pen_planeapp/static/media/destto.e231c83a.svg",
+    "static/media/noun_Suitcase_10620.46cbc93e.svg": "/cb_pen_planeapp/static/media/noun_Suitcase_10620.46cbc93e.svg",
+    "static/media/noun_percentage_108380.770947e6.svg": "/cb_pen_planeapp/static/media/noun_percentage_108380.770947e6.svg",
+    "static/media/penflight logo.5f6c03a0.svg": "/cb_pen_planeapp/static/media/penflight logo.5f6c03a0.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.650c243a.js",
+    "static/css/2.f87e9f44.chunk.css",
+    "static/js/2.ce7ce8a7.chunk.js",
+    "static/css/main.160146bd.chunk.css",
+    "static/js/main.fd86194e.chunk.js"
+  ]
+}
